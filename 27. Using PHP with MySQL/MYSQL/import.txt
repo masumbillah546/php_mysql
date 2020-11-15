@@ -1,0 +1,9 @@
+LOAD DATA INFILE "mydata.txt"
+INTO TABLE sales (id, client_id, order_time, total_cost)
+SET added_to_table = CURRENT_TIMESTAMP;
+-------------------------------------------------------------
+mysqlimport
+------------------------------------------------------
+SELECT* INTO OUTFILE "usernew.txt"
+FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n'
+FROM wdpf44.users

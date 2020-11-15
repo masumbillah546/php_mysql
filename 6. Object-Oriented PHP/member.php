@@ -3,7 +3,7 @@
 include("persistable.php");
 
 
-class Member implements Persistable {
+class Member2 implements Persistable {
   private $username;
   private $location;
   private $homepage;

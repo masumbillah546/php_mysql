@@ -1,0 +1,148 @@
+.body{
+	border: 0;
+	/*background-color: yellow;*/
+	height: auto;
+	width: 100%;
+	position: absolute;
+}
+.mynav{
+	border: 2px solid red;
+	background-color: lightblue;
+	height:121px;
+	width: 100%;
+	position: fixed;
+}
+.box{
+	height: 37px;
+	width: 32.7%;
+	border: 2px solid black;
+	position: relative;
+	float: left;
+	text-align: center;
+	padding: 0;
+	margin: 1px;
+	box-shadow: 0 0 5px 1px black;
+	/*border-radius:1px;*/
+
+}
+a{
+	display: block;
+	padding: 6.3px;
+	background-color: #F2E4E4;
+	color: black;
+	text-decoration: none;
+}
+a:hover{
+	background-color: red;
+	color: white;
+	text-decoration: none;
+
+}
+.meal{
+	width: 100%;
+	padding: 7%;
+	padding-top: 0;
+	
+}
+.meal th{
+	text-align: center;
+	
+}
+
+.meal2{
+	width: 100%;
+	padding: 7%;
+	padding-top: 0;
+	
+}
+.meal2 th{
+	text-align: center;
+	padding: 5px;
+	
+}
+.meal2 td{
+	text-align: center;
+	padding: 5px;
+	
+}
+.meal2 td:first-child{
+	background-color: #F98E8E;
+	font-weight: bolder;
+	font-size: 140%;
+}
+
+.meal input{
+			width: 60px;
+		}
+
+.bazar input{
+			width: 800px;
+		}
+
+.btnC{
+	margin: 5px;
+}
+.apple{
+	width:100%;
+	padding: 7%;
+}
+.apple table{
+	width: 80%;
+
+}
+
+.masum{
+	width: 100%;
+	padding: 7%;
+	
+}
+.masum table{
+	width: 80%;
+}
+.tanvir{
+	width: 100%;
+	padding: 7%;
+	
+}
+.tanvir table{
+	width: 80%;
+}
+.antor{
+	width: 100%;
+	padding: 7%;
+	
+}
+.antor table{
+	width: 80%;
+}
+.result{
+	width: 100%;
+	padding: 20px;
+	
+}
+.result table{
+	width: 100%;
+	
+}
+.result table:last-child{
+	width:50%;
+	
+}
+.result td{
+	padding: 10px;
+	text-align: center;
+}
+.result th{
+	padding: 9px;
+	text-align: center;
+}
+
+h4{
+	color: green;
+}
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+}

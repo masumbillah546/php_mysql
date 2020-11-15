@@ -1,0 +1,96 @@
+CREATE VIEW customers_and_employees_table AS
+
+SELECT customers.customerNumber, customerName, phone, orderDate FROM customers, orders
+
+WHERE customers.customerNumber=orders.orderNumber;
+
+-----------------------------------------------
+ <<TRIGGER>>
+
+DELIMITER //
+
+CREATE TRIGGER table_audit
+AFTER INSERT
+FROM table FOR EACH ROW
+BEGIN
+	INSERT INTO table_audit
+	VALUES('',NOW(),Action)
+END//
+DELIMITER ;
+
+---------------------------------------------
+  <<TABLE>>
+
+CREATE TABLE offices_audit(
+
+id TINYINT AUTO_INCREMENT NOT NULL,
+fname VARCHAR(20) NOT NULL,
+lname VARCHAR(20) NOT NULL,
+email VARCHAR(35) NOT NULL,
+phone VARCHAR(11) NOT NULL,
+PRIMARY KEY(id)
+
+);
+
+---------------------------------
+
+SELECT 
+    lastName, firstName, officeCode
+FROM
+    employees
+WHERE
+    officeCode IN (SELECT 
+            officeCode
+        FROM
+            offices
+        WHERE
+            country = 'USA' OR country='UK');
+
+-------------------------------------------
+
+SELECT 
+    customerNumber, 
+    checkNumber, 
+    amount
+FROM
+    payments
+WHERE
+    amount = (SELECT MAX(amount) FROM payments);
+
+--------------------------------------------------
+
+<<STORED PROCEDURE>>
+
+SET @p0='4'; CALL `masum`(@p0); SELECT @p0 AS `id`;
+
+------------------------------------
+
+
+CREATE PROCEDURE get_inventory()
+ ->SELECT 45 AS inventory; 
+CALL get_inventory();
+
+--------------------------------------
+
+
+
+DELIMITER //
+
+CREATE TRIGGER after_delete_manufac
+AFTER DELETE
+ON manufacturer FOR EACH ROW
+BEGIN
+	DELETE FROM product WHERE manufacturer_id = OLD.id;
+	
+END//
+DELIMITER ;
+
+-------------------------------------
+
+
+(sir)
+
+CREATE VIEW product_details AS
+SELECT product.id, product.name AS ProductName, price, manufacturer.name AS ManufacturerName, address 
+FROM product, manufacturer
+WHERE product.manufacturer_id = manufacturer.id;

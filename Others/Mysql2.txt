@@ -1,0 +1,52 @@
+<<<TRIGGER>>>
+DELIMITER //
+CREATE TRIGGER before_employee_update 
+    BEFORE UPDATE ON employees
+    FOR EACH ROW 
+
+BEGIN
+
+ INSERT INTO employees_audit
+ SET action = 'update',
+     employeeNumber = OLD.employeeNumber,
+     lastname = OLD.lastname,
+     changedat = NOW();
+
+
+END; //
+
+DELIMITER ;
+
+-----------------------------------------------
+<<<<<procedure>>>>
+
+DELIMITER //
+CREATE PROCEDURE price(IN m_id CHAR(8))
+
+BEGIN
+
+ SELECT price FROM product WHERE id = m_id;
+
+END;
+//
+DELIMITER ;
+
+
+-------------------------------------------------
+
+<<<<<Function>>>>
+
+DELIMITER //
+CREATE FUNCTION calculate_discount(pr_id CHAR(8)) RETURNS DECIMAL(10,2)
+COMMENT 'Calculate product discount'
+BEGIN
+ DECLARE total_a_discount DECIMAL(10,2);
+ DECLARE discount DECIMAL(10,2);
+ DECLARE curprice DECIMAL(10,2);
+ SELECT price INTO curprice FROM product WHERE id = pr_id;
+ SET discount = curprice * .15; 	
+ SET total_a_discount = curprice - discount;
+RETURN total_a_discount ;
+END;
+//
+DELIMITER ;
